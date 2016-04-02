@@ -1,6 +1,11 @@
 package model
 
+import java.sql.Time
+
 /**
  * Created by mesfinmebrate on 19/03/2016.
  */
-case class ScheduledItem ()
+trait ScheduledItem {
+  def start: Time
+  def finish: Time
+}
