@@ -7,4 +7,4 @@ case class FinancialTracking (currentAmount: Double,
                               goalAmount: Double,
                               paidIn: Double,
                               paidOut: Double,
-                              progress: FinancialProgressType.Value)
+                              progress: FinancialProgressType.Value) extends Spoke

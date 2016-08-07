@@ -5,7 +5,7 @@ package com.anchor.model
  */
 case class DonutCylinder (goalId: Id,
                           donuts: Seq[LaserDonut],
-                          graduation: GraduationType.Value) {
+                          graduation: GraduationType.Value) extends Spoke {
 
   def next: Option[LaserDonut] = {
     donuts.headOption

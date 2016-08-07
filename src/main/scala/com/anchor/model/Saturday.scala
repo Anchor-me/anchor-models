@@ -12,4 +12,4 @@ case class Saturday (id: Id,
                      threads: Seq[Thread],
                      portion: Option[Portion],
                      passiveHobby: Option[Hobby],
-                     financialTracking: Option[FinancialTracking]) extends Day
+                     financialTracking: Option[FinancialTracking]) extends Day with Spoke

@@ -8,4 +8,4 @@ case class Goal (id: Id,
                  summary: String,
                  description: String,
                  level: Int,
-                 priority: Boolean) extends HasId
+                 priority: Boolean) extends HasId with Spoke

@@ -5,4 +5,4 @@ package com.anchor.model
  */
 case class Theme (id: Id,
                   yearId: Id,
-                  name: String)
+                  name: String) extends Spoke

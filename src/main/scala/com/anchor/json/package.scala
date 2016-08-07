@@ -10,4 +10,5 @@ import play.api.libs.json.Json
 package object json {
   implicit val formatId = Json.format[Id]
   implicit val formatGoal = Json.format[Goal]
+  implicit val formatTheme = Json.format[Theme]
 }

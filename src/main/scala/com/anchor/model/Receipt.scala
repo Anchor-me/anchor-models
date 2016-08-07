@@ -5,4 +5,4 @@ package com.anchor.model
  */
 case class Receipt (purchasedItem: String,
                     expenditure: Double,
-                    nameOfEstablishment: String)
+                    nameOfEstablishment: String) extends Spoke

@@ -7,4 +7,4 @@ case class Hobby (id: Id,
                   summary: String,
                   description: String,
                   typeOf: HobbyType.Value,
-                  status: StatusType.Value) extends Task
+                  status: StatusType.Value) extends Task with Spoke

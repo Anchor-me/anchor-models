@@ -7,4 +7,4 @@ case class Thread (id: Id,
                    summary: String,
                    description: String,
                    goalId: Id,
-                   status: StatusType.Value) extends Task
+                   status: StatusType.Value) extends Task with Spoke

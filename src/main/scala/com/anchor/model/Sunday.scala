@@ -11,6 +11,6 @@ case class Sunday (id: Id,
                    date: Date,
                    threads: Seq[Thread],
                    activeHobby: Option[Hobby],
-                   financialTracking: Option[FinancialTracking]) extends Day {
+                   financialTracking: Option[FinancialTracking]) extends Day with Spoke {
   val portion = None
 }

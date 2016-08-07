@@ -7,4 +7,4 @@ import java.sql.Time
  */
 case class ConcreteBlock (start: Time,
                           finish: Time,
-                          task: Option[Task]) extends ScheduledItem
+                          task: Option[Task]) extends ScheduledItem with Spoke

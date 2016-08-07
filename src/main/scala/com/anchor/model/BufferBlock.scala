@@ -8,4 +8,4 @@ import java.sql.Time
 case class BufferBlock (start: Time,
                         finish: Time,
                         firstTask: Option[Task],
-                        secondTask: Option[Task]) extends ScheduledItem
+                        secondTask: Option[Task]) extends ScheduledItem with Spoke

@@ -9,4 +9,4 @@ case class Week (id: Id,
                  startDate: Date,
                  finishDate: Date,
                  weave: Option[Weave],
-                 laserDonut: Option[LaserDonut]) extends TimeFrame
+                 laserDonut: Option[LaserDonut]) extends TimeFrame with Spoke

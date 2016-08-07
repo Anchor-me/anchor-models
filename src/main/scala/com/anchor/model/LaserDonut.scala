@@ -10,4 +10,4 @@ case class LaserDonut (id: Id,
                        status: StatusType.Value,
                        milestone: String,
                        order: Int,
-                       typeOf: DonutType.Value)
+                       typeOf: DonutType.Value) extends Spoke
