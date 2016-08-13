@@ -1,6 +1,5 @@
 package com.anchor.model
 
-import java.lang.Thread
 import java.util.Date
 
 /**
@@ -11,6 +10,6 @@ case class Sunday (id: Id,
                    date: Date,
                    threads: Seq[Thread],
                    activeHobby: Option[Hobby],
-                   financialTracking: Option[FinancialTracking]) extends Day with Spoke {
+                   financialTracking: Option[FinancialTracking]) extends Day {
   val portion = None
 }

@@ -8,4 +8,4 @@ case class Portion (id: Id,
                     summary: String,
                     toDos: Seq[String],
                     order: Int,
-                    status: StatusType.Value) extends Task with Spoke
+                    status: StatusType.Value) extends Task

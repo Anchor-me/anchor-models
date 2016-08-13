@@ -7,4 +7,4 @@ import java.util.Date
  */
 case class Year (id: Id,
                  startDate: Date,
-                 finishDate: Date) extends TimeFrame with Spoke
+                 finishDate: Date) extends TimeFrame

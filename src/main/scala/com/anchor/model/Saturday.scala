@@ -1,6 +1,5 @@
 package com.anchor.model
 
-import java.lang.Thread
 import java.util.Date
 
 /**
@@ -12,4 +11,4 @@ case class Saturday (id: Id,
                      threads: Seq[Thread],
                      portion: Option[Portion],
                      passiveHobby: Option[Hobby],
-                     financialTracking: Option[FinancialTracking]) extends Day with Spoke
+                     financialTracking: Option[FinancialTracking]) extends Day

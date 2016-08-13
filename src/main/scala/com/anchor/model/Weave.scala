@@ -8,4 +8,4 @@ case class Weave (id: Id,
                   description: String,
                   goal: Id,
                   status: StatusType.Value,
-                  typeOf: WeaveType.Value) extends Task with Spoke
+                  typeOf: WeaveType.Value) extends Task

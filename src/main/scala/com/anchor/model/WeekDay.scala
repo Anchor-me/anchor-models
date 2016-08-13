@@ -11,4 +11,4 @@ case class WeekDay (id: Id,
                     threads: Seq[Thread],
                     weave: Option[Weave],
                     portion: Option[Portion],
-                    financialTracking: Option[FinancialTracking]) extends Day with Spoke
+                    financialTracking: Option[FinancialTracking]) extends Day
