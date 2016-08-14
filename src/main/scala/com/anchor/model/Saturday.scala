@@ -1,14 +1,12 @@
 package com.anchor.model
 
-import java.util.Date
-
 /**
  * Created by mesfinmebrate on 19/03/2016.
  */
 case class Saturday (id: Id,
                      weekId: Id,
-                     date: Date,
-                     threads: Seq[Thread],
-                     portion: Option[Portion],
-                     passiveHobby: Option[Hobby],
-                     financialTracking: Option[FinancialTracking]) extends Day
+                     date: Long,
+                     threads: Seq[Id],
+                     portion: Option[Id],
+                     passiveHobby: Option[Id],
+                     financialTracking: Option[Id]) extends Day
