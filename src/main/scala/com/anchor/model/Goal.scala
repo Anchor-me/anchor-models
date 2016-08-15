@@ -8,4 +8,6 @@ case class Goal (id: Id,
                  summary: String,
                  description: String,
                  level: Int,
-                 priority: Boolean) extends HasId with Spoke
+                 priority: Boolean,
+                 status: GoalStatusType.Value,
+                 graduation: GraduationType.Value) extends HasId with Spoke

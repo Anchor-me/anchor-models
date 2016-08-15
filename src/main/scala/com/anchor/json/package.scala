@@ -21,6 +21,7 @@ package object json {
   implicit val formatSpokeType = EnumUtils.format(SpokeType)
   implicit val formatStatusType = EnumUtils.format(StatusType)
   implicit val formatWeaveType = EnumUtils.format(WeaveType)
+  implicit val formatGoalStatusType = EnumUtils.format(GoalStatusType)
 
   implicit val formatHobby = Json.format[Hobby]
   implicit val formatPortion = Json.format[Portion]
@@ -65,7 +66,6 @@ package object json {
 
   implicit val formatBacklogItem = Json.format[BacklogItem]
   implicit val formatLaserDonut = Json.format[LaserDonut]
-  implicit val formatDonutCylinder = Json.format[DonutCylinder]
   implicit val formatGoal = Json.format[Goal]
   implicit val formatReceipt = Json.format[Receipt]
   implicit val formatTheme = Json.format[Theme]

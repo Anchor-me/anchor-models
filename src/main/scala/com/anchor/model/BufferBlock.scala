@@ -5,5 +5,5 @@ package com.anchor.model
  */
 case class BufferBlock (start: Long,
                         finish: Long,
-                        firstTask: Option[Task],
-                        secondTask: Option[Task]) extends ScheduledItem
+                        firstTask: Option[Id],
+                        secondTask: Option[Id]) extends ScheduledItem

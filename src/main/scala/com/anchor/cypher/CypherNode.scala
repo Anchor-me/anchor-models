@@ -22,9 +22,7 @@ object CypherNode {
     s"""
        |(bufferBlock:BufferBlock {
        |start: ${bufferBlock.start},
-       |finish: ${bufferBlock.finish},
-       |firstTask: "${bufferBlock.firstTask.map(_.id.id).mkString}",
-       |secondTask: "${bufferBlock.secondTask.map(_.id.id).mkString}"
+       |finish: ${bufferBlock.finish}
        |})
      """.stripMargin
   }
@@ -35,14 +33,6 @@ object CypherNode {
        |start: ${concreteBlock.start},
        |finish: ${concreteBlock.finish}
        |})"
-     """.stripMargin
-  }
-
-  def apply(donutCylinder: DonutCylinder): String = {
-    s"""
-       |(donutCylinder:DonutCylinder {
-       |graduation: "${donutCylinder.graduation.toString}"
-       |})
      """.stripMargin
   }
 
@@ -66,7 +56,9 @@ object CypherNode {
        |summary: "${goal.summary}",
        |description: "${goal.description}",
        |level: ${goal.level},
-       |priority: ${goal.priority}
+       |priority: ${goal.priority},
+       |status: "${goal.status.toString}",
+       |graduation: "${goal.graduation.toString}"
        |})
     """.stripMargin
   }
