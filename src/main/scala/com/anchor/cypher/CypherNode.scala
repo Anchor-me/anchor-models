@@ -23,15 +23,18 @@ object CypherNode {
        |(bufferBlock:BufferBlock {
        |start: ${bufferBlock.start},
        |finish: ${bufferBlock.finish}
+       |${bufferBlock.firstTask.map(o => s", firstTask: ${o.id}")}
+       |${bufferBlock.secondTask.map(o => s", secondTask: ${o.id}")}
        |})
      """.stripMargin
   }
 
   def apply(concreteBlock: ConcreteBlock): String = {
     s"""
-       |(bufferBlock:BufferBlock {
+       |(concreteBlock: ConcreteBlock {
        |start: ${concreteBlock.start},
        |finish: ${concreteBlock.finish}
+       |${concreteBlock.task.map(o => s", task: ${o.id}")}
        |})"
      """.stripMargin
   }
@@ -53,6 +56,7 @@ object CypherNode {
     s"""
        |(goal:Goal {
        |id: "${goal.id.id}",
+       |themeId: "${goal.themeId.id}",
        |summary: "${goal.summary}",
        |description: "${goal.description}",
        |level: ${goal.level},
@@ -67,6 +71,7 @@ object CypherNode {
     s"""
        |(hobby:Hobby {
        |id: "${hobby.id.id}",
+       |goalId: "${hobby.id.id}",
        |summary: "${hobby.summary}",
        |description: "${hobby.description}",
        |typeOf: "${hobby.typeOf.toString}",
@@ -79,6 +84,7 @@ object CypherNode {
     s"""
        |(laserDonut:LaserDonut {
        |id: "${laserDonut.id.id}",
+       |goalId: "${laserDonut.id}",
        |summary: "${laserDonut.summary}",
        |description: "${laserDonut.description}",
        |status: "${laserDonut.status.toString}",
@@ -93,6 +99,7 @@ object CypherNode {
     s"""
        |(portion:Portion {
        |id: "${portion.id.id}",
+       |laserDonutId: ${portion.laserDonutId.id},
        |summary: "${portion.summary}",
        |order: ${portion.order},
        |status: "${portion.status.toString}"
@@ -114,7 +121,11 @@ object CypherNode {
     s"""
        |(saturday:Saturday {
        |id: "${saturday.id.id}",
-       |date: ${saturday.date}
+       |weekId: "${saturday.weekId.id}",
+       |date: ${saturday.date},
+       |threads: [${saturday.threads.map(_.id).mkString(", ")}]
+       |${saturday.portion.map(o => s", portion: ${o.id}")}
+       |${saturday.financialTracking.map(o => s", financialTracking: ${o.id}")}
        |})
      """.stripMargin
   }
@@ -123,7 +134,11 @@ object CypherNode {
     s"""
        |(sunday:Sunday {
        |id: "${sunday.id.id}",
-       |date: ${sunday.date}
+       |weekId: ${sunday.weekId.id},
+       |date: ${sunday.date},
+       |threads: [${sunday.threads.map(_.id).mkString(", ")}]
+       |${sunday.activeHobby.map(o => s", activeHobby: ${o.id}")}
+       |${sunday.financialTracking.map(o => s", financialTracking: ${o.id}")}
        |})
      """.stripMargin
   }
@@ -142,6 +157,7 @@ object CypherNode {
     s"""
        |(thread:Thread {
        |id: "${thread.id.id}",
+       |goalId: "${thread.goalId.id}",
        |summary: "${thread.summary}",
        |description: "${thread.description}",
        |status: "${thread.status.toString}"
@@ -153,7 +169,9 @@ object CypherNode {
     s"""
        |(toDo:ToDo {
        |id: "${toDo.id.id}",
+       |portionId: "${toDo.portionId.id}",
        |description: "${toDo.description}",
+       |order: "${toDo.order}",
        |status: "${toDo.status.toString}"
        |})
      """.stripMargin
@@ -163,6 +181,7 @@ object CypherNode {
     s"""
        |(weave:Weave {
        |id: "${weave.id.id}",
+       |goalId: "${weave.goalId.id}",
        |summary: "${weave.summary}",
        |description: "${weave.description}",
        |status: "${weave.status.toString}",
@@ -177,6 +196,8 @@ object CypherNode {
        |id: "${week.id.id}",
        |startDate: ${week.startDate},
        |finishDate: ${week.finishDate}
+       |${week.weave.map(o => s", weave: ${o.id}")}
+       |${week.laserDonut.map(o => s", laserDonut: ${o.id}")}
        |)}
      """.stripMargin
   }
@@ -185,7 +206,12 @@ object CypherNode {
     s"""
        |(weekDay:WeekDay {
        |id: "${weekDay.id.id}",
-       |date: ${weekDay.date}
+       |weekId: "${weekDay.weekId.id}",
+       |date: ${weekDay.date},
+       |threads: [${weekDay.threads.map(_.id).mkString(", ")}]
+       |${weekDay.weave.map(o => s", weave: ${o.id}")}
+       |${weekDay.portion.map(o => s", portion: ${o.id}")}
+       |${weekDay.financialTracking.map(o => s", financialTracking: ${o.id}")}
        |})
      """.stripMargin
   }

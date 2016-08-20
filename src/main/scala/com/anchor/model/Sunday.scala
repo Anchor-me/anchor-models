@@ -6,8 +6,8 @@ package com.anchor.model
 case class Sunday (id: Id,
                    weekId: Id,
                    date: Long,
-                   threads: Seq[Thread],
-                   activeHobby: Option[Hobby],
-                   financialTracking: Option[FinancialTracking]) extends Day {
+                   threads: Seq[Id],
+                   activeHobby: Option[Id],
+                   financialTracking: Option[Id]) extends Day {
   val portion = None
 }
