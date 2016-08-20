@@ -6,6 +6,6 @@ package com.anchor.model
 case class Portion (id: Id,
                     laserDonutId: Id,
                     summary: String,
-                    toDos: Seq[String],
+                    toDos: Seq[ToDo],
                     order: Int,
                     status: StatusType.Value) extends Task

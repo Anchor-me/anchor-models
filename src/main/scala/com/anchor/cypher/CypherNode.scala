@@ -149,6 +149,16 @@ object CypherNode {
      """.stripMargin
   }
 
+  def apply(toDo: ToDo): String = {
+    s"""
+       |(toDo:ToDo {
+       |id: "${toDo.id.id}",
+       |description: "${toDo.description}",
+       |status: "${toDo.status.toString}"
+       |})
+     """.stripMargin
+  }
+
   def apply(weave: Weave): String = {
     s"""
        |(weave:Weave {
