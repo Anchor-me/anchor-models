@@ -5,6 +5,7 @@ package com.anchor.model
  */
 case class Goal (id: Id,
                  themeId: Id,
+                 backlogItems: Seq[Id],
                  summary: String,
                  description: String,
                  level: Int,

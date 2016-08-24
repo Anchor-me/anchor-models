@@ -43,6 +43,7 @@ object CypherNode {
     s"""
        |(financialTracking:FinancialTracking {
        |id: "${financialTracking.id.id}",
+       |yearId: "${financialTracking.yearId.id}",
        |currentAmount: ${financialTracking.currentAmount},
        |goalAmount: ${financialTracking.goalAmount},
        |paidIn: ${financialTracking.paidIn},
@@ -57,6 +58,7 @@ object CypherNode {
        |(goal:Goal {
        |id: "${goal.id.id}",
        |themeId: "${goal.themeId.id}",
+       |backlogItems: [${goal.backlogItems.map(_.id).mkString(", ")}]
        |summary: "${goal.summary}",
        |description: "${goal.description}",
        |level: ${goal.level},
@@ -110,6 +112,8 @@ object CypherNode {
   def apply(receipt: Receipt): String = {
     s"""
        |(receipt:Receipt {
+       |id: "${receipt.id.id}",
+       |trackingId: "${receipt.trackingId.id}",
        |purchasedItem: "${receipt.purchasedItem}",
        |expenditure: ${receipt.expenditure},
        |nameOfEstablishment: "${receipt.nameOfEstablishment}"
@@ -165,6 +169,15 @@ object CypherNode {
      """.stripMargin
   }
 
+//  def apply(timeTable: TimeTable): String = {
+//    s"""
+//       |(timeTable:TimeTable {
+//       |dayId: "${timeTable.dayId.id}",
+//       |scheduledItems:
+//       |})
+//     """.stripMargin
+//  }
+
   def apply(toDo: ToDo): String = {
     s"""
        |(toDo:ToDo {
@@ -194,6 +207,7 @@ object CypherNode {
     s"""
        |(week:Week {
        |id: "${week.id.id}",
+       |yearId: "${week.yearId.id}",
        |startDate: ${week.startDate},
        |finishDate: ${week.finishDate}
        |${week.weave.map(o => s", weave: ${o.id}")}
