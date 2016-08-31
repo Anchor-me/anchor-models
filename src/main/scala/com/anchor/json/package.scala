@@ -5,8 +5,7 @@ package com.anchor
  */
 
 import com.anchor.model._
-import play.api.libs.functional.syntax._
-import play.api.libs.json.{JsResult, JsValue, Format, Json}
+import play.api.libs.json.Json
 
 package object json {
 
@@ -34,36 +33,8 @@ package object json {
   implicit val formatSunday = Json.format[Sunday]
   implicit val formatWeekDay = Json.format[WeekDay]
 
-  implicit val formatTask = new Format[Task] {
-    override def reads(json: JsValue): JsResult[Task] = {
-      Json.fromJson[Hobby](json) or
-        Json.fromJson[Portion](json) or
-        Json.fromJson[Thread](json) or
-        Json.fromJson[Weave](json)
-    }
-
-    override def writes(o: Task): JsValue = o match {
-      case hobby: Hobby => Json.toJson(hobby)
-      case portion: Portion => Json.toJson(portion)
-      case thread: Thread => Json.toJson(thread)
-      case weave: Weave   => Json.toJson(weave)
-    }
-  }
-
   implicit val formatBufferBlock = Json.format[BufferBlock]
   implicit val formatConcreteBlock = Json.format[ConcreteBlock]
-
-  implicit val formatScheduledItem = new Format[ScheduledItem] {
-    override def reads(json: JsValue): JsResult[ScheduledItem] = {
-      Json.fromJson[BufferBlock](json) or
-        Json.fromJson[ConcreteBlock](json)
-    }
-
-    override def writes(o: ScheduledItem): JsValue = o match {
-      case bufferBlock: BufferBlock => Json.toJson(bufferBlock)
-      case concreteBlock: ConcreteBlock => Json.toJson(concreteBlock)
-    }
-  }
 
   implicit val formatBacklogItem = Json.format[BacklogItem]
   implicit val formatLaserDonut = Json.format[LaserDonut]

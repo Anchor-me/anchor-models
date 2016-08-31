@@ -23,8 +23,8 @@ object CypherNode {
        |(bufferBlock:BufferBlock {
        |start: ${bufferBlock.start},
        |finish: ${bufferBlock.finish}
-       |${bufferBlock.firstTask.map(o => s", firstTask: ${o.id}")}
-       |${bufferBlock.secondTask.map(o => s", secondTask: ${o.id}")}
+       |${getOptionalField("firstTask", bufferBlock.firstTask)}
+       |${getOptionalField("secondTask", bufferBlock.secondTask)}
        |})
      """.stripMargin
   }
@@ -34,8 +34,8 @@ object CypherNode {
        |(concreteBlock: ConcreteBlock {
        |start: ${concreteBlock.start},
        |finish: ${concreteBlock.finish}
-       |${concreteBlock.task.map(o => s", task: ${o.id}")}
-       |})"
+       |${getOptionalField("task", concreteBlock.task)}
+       |})
      """.stripMargin
   }
 
@@ -58,7 +58,7 @@ object CypherNode {
        |(goal:Goal {
        |id: "${goal.id.id}",
        |themeId: "${goal.themeId.id}",
-       |backlogItems: [${goal.backlogItems.map(_.id).mkString(", ")}]
+       |backlogItems: ${getArrayField(goal.backlogItems)},
        |summary: "${goal.summary}",
        |description: "${goal.description}",
        |level: ${goal.level},
@@ -127,9 +127,9 @@ object CypherNode {
        |id: "${saturday.id.id}",
        |weekId: "${saturday.weekId.id}",
        |date: ${saturday.date},
-       |threads: [${saturday.threads.map(_.id).mkString(", ")}]
-       |${saturday.portion.map(o => s", portion: ${o.id}")}
-       |${saturday.financialTracking.map(o => s", financialTracking: ${o.id}")}
+       |threads: ${getArrayField(saturday.threads)}
+       |${getOptionalField("portion", saturday.portion)}
+       |${getOptionalField("financialTracking", saturday.financialTracking)}
        |})
      """.stripMargin
   }
@@ -140,9 +140,9 @@ object CypherNode {
        |id: "${sunday.id.id}",
        |weekId: ${sunday.weekId.id},
        |date: ${sunday.date},
-       |threads: [${sunday.threads.map(_.id).mkString(", ")}]
-       |${sunday.activeHobby.map(o => s", activeHobby: ${o.id}")}
-       |${sunday.financialTracking.map(o => s", financialTracking: ${o.id}")}
+       |threads: ${getArrayField(sunday.threads)}
+       |${getOptionalField("activeHobby", sunday.activeHobby)}
+       |${getOptionalField("financialTracking", sunday.financialTracking)}
        |})
      """.stripMargin
   }
@@ -210,8 +210,8 @@ object CypherNode {
        |yearId: "${week.yearId.id}",
        |startDate: ${week.startDate},
        |finishDate: ${week.finishDate}
-       |${week.weave.map(o => s", weave: ${o.id}")}
-       |${week.laserDonut.map(o => s", laserDonut: ${o.id}")}
+       |${getOptionalField("weave", week.weave)}
+       |${getOptionalField("laserDonut", week.laserDonut)}
        |)}
      """.stripMargin
   }
@@ -222,10 +222,10 @@ object CypherNode {
        |id: "${weekDay.id.id}",
        |weekId: "${weekDay.weekId.id}",
        |date: ${weekDay.date},
-       |threads: [${weekDay.threads.map(_.id).mkString(", ")}]
-       |${weekDay.weave.map(o => s", weave: ${o.id}")}
-       |${weekDay.portion.map(o => s", portion: ${o.id}")}
-       |${weekDay.financialTracking.map(o => s", financialTracking: ${o.id}")}
+       |threads: ${getArrayField(weekDay.threads)}
+       |${getOptionalField("weave", weekDay.weave)}
+       |${getOptionalField("portion", weekDay.portion)}
+       |${getOptionalField("financialTracking", weekDay.financialTracking)}
        |})
      """.stripMargin
   }
@@ -238,5 +238,13 @@ object CypherNode {
        |finishDate: ${year.finishDate}
        |})
      """.stripMargin
+  }
+
+  private def getOptionalField(key: String, value: Option[Id]): String = {
+    value.map(o => s""", $key : "${o.id}"""").getOrElse("")
+  }
+
+  private def getArrayField(seq: Seq[Id]): String = {
+    s"[${seq.map(id => s""""${id.id}"""").mkString(", ")}]"
   }
 }
