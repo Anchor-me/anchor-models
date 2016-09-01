@@ -101,7 +101,7 @@ object CypherNode {
     s"""
        |(portion:Portion {
        |id: "${portion.id.id}",
-       |laserDonutId: ${portion.laserDonutId.id},
+       |laserDonutId: "${portion.laserDonutId.id}",
        |summary: "${portion.summary}",
        |order: ${portion.order},
        |status: "${portion.status.toString}"
@@ -212,7 +212,7 @@ object CypherNode {
        |finishDate: ${week.finishDate}
        |${getOptionalField("weave", week.weave)}
        |${getOptionalField("laserDonut", week.laserDonut)}
-       |)}
+       |})
      """.stripMargin
   }
 
