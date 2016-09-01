@@ -11,6 +11,7 @@ object CypherNode {
     s"""
        |(backlogItem:BacklogItem {
        |id: "${backlogItem.id.id}",
+       |yearId: "${backlogItem.yearId.id}",
        |summary: "${backlogItem.summary}",
        |description: "${backlogItem.description}",
        |typeOf: "${backlogItem.typeOf.toString}"
@@ -21,6 +22,7 @@ object CypherNode {
   def apply(bufferBlock: BufferBlock): String = {
     s"""
        |(bufferBlock:BufferBlock {
+       |id: "${bufferBlock.id.id}",
        |start: ${bufferBlock.start},
        |finish: ${bufferBlock.finish}
        |${getOptionalField("firstTask", bufferBlock.firstTask)}
@@ -32,6 +34,7 @@ object CypherNode {
   def apply(concreteBlock: ConcreteBlock): String = {
     s"""
        |(concreteBlock: ConcreteBlock {
+       |id: "${concreteBlock.id.id}",
        |start: ${concreteBlock.start},
        |finish: ${concreteBlock.finish}
        |${getOptionalField("task", concreteBlock.task)}
@@ -234,7 +237,7 @@ object CypherNode {
   def apply(year: Year): String = {
     s"""
        |(year:Year {
-       |id: "${year.id}",
+       |id: "${year.id.id}",
        |startDate: ${year.startDate},
        |finishDate: ${year.finishDate},
        |threads: ${getArrayField(year.threads)}
