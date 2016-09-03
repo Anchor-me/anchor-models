@@ -8,5 +8,4 @@ case class Saturday (id: Id,
                      date: Long,
                      threads: Seq[Id],
                      portion: Option[Id],
-                     passiveHobby: Option[Id],
-                     financialTracking: Option[Id]) extends Day
+                     passiveHobby: Option[Id]) extends Day

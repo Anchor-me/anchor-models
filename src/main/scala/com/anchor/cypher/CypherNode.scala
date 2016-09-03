@@ -132,7 +132,6 @@ object CypherNode {
        |date: ${saturday.date},
        |threads: ${getArrayField(saturday.threads)}
        |${getOptionalField("portion", saturday.portion)}
-       |${getOptionalField("financialTracking", saturday.financialTracking)}
        |})
      """.stripMargin
   }
@@ -145,7 +144,6 @@ object CypherNode {
        |date: ${sunday.date},
        |threads: ${getArrayField(sunday.threads)}
        |${getOptionalField("activeHobby", sunday.activeHobby)}
-       |${getOptionalField("financialTracking", sunday.financialTracking)}
        |})
      """.stripMargin
   }
@@ -229,7 +227,6 @@ object CypherNode {
        |threads: ${getArrayField(weekDay.threads)}
        |${getOptionalField("weave", weekDay.weave)}
        |${getOptionalField("portion", weekDay.portion)}
-       |${getOptionalField("financialTracking", weekDay.financialTracking)}
        |})
      """.stripMargin
   }

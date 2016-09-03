@@ -7,7 +7,6 @@ case class Sunday (id: Id,
                    weekId: Id,
                    date: Long,
                    threads: Seq[Id],
-                   activeHobby: Option[Id],
-                   financialTracking: Option[Id]) extends Day {
+                   activeHobby: Option[Id]) extends Day {
   val portion = None
 }
