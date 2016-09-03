@@ -80,6 +80,7 @@ object CypherNode {
        |summary: "${hobby.summary}",
        |description: "${hobby.description}",
        |typeOf: "${hobby.typeOf.toString}",
+       |frequency: "${hobby.frequency.toString}",
        |status: "${hobby.status.toString}"
        |})
      """.stripMargin
@@ -212,7 +213,7 @@ object CypherNode {
        |startDate: ${week.startDate},
        |finishDate: ${week.finishDate},
        |threads: ${getArrayField(week.threads)}
-       |${getOptionalField("weave", week.weave)}
+       |weaves: ${getArrayField(week.weaves)}
        |${getOptionalField("laserDonut", week.laserDonut)}
        |})
      """.stripMargin
@@ -225,7 +226,7 @@ object CypherNode {
        |weekId: "${weekDay.weekId.id}",
        |date: ${weekDay.date},
        |threads: ${getArrayField(weekDay.threads)}
-       |${getOptionalField("weave", weekDay.weave)}
+       |weaves: ${getArrayField(weekDay.weaves)}
        |${getOptionalField("portion", weekDay.portion)}
        |})
      """.stripMargin

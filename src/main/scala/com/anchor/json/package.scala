@@ -16,6 +16,7 @@ package object json {
   implicit val formatFinancialProgressType = EnumUtils.format(FinancialProgressType)
   implicit val formatGraduationType = EnumUtils.format(GraduationType)
   implicit val formatHobbyType = EnumUtils.format(HobbyType)
+  implicit val formatHobbyFrequency = EnumUtils.format(HobbyFrequency)
   implicit val formatProgressType = EnumUtils.format(ProgressType)
   implicit val formatSpokeType = EnumUtils.format(SpokeType)
   implicit val formatStatusType = EnumUtils.format(StatusType)

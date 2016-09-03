@@ -7,5 +7,5 @@ case class WeekDay (id: Id,
                     weekId: Id,
                     date: Long,
                     threads: Seq[Id],
-                    weave: Option[Id],
+                    weaves: Seq[Id],
                     portion: Option[Id]) extends Day

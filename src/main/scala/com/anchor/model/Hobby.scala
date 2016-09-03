@@ -8,4 +8,5 @@ case class Hobby (id: Id,
                   summary: String,
                   description: String,
                   typeOf: HobbyType.Value,
+                  frequency: HobbyFrequency.Value,
                   status: StatusType.Value) extends Task

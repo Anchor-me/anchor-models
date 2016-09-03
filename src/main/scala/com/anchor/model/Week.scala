@@ -8,5 +8,5 @@ case class Week (id: Id,
                  startDate: Long,
                  finishDate: Long,
                  threads: Seq[Id],
-                 weave: Option[Id],
+                 weaves: Seq[Id],
                  laserDonut: Option[Id]) extends TimeFrame
