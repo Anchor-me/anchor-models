@@ -46,7 +46,7 @@ object CypherNode {
     s"""
        |(financialTracking:FinancialTracking {
        |id: "${financialTracking.id.id}",
-       |yearId: "${financialTracking.yearId.id}",
+       |dayId: "${financialTracking.dayId.id}",
        |currentAmount: ${financialTracking.currentAmount},
        |goalAmount: ${financialTracking.goalAmount},
        |paidIn: ${financialTracking.paidIn},
