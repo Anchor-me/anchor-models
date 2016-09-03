@@ -6,6 +6,6 @@ package com.anchor.model
 case class Weave (id: Id,
                   summary: String,
                   description: String,
-                  goalId: Id,
+                  goalId: Option[Id],
                   status: StatusType.Value,
                   typeOf: WeaveType.Value) extends Task

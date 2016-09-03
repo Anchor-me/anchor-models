@@ -162,10 +162,10 @@ object CypherNode {
     s"""
        |(thread:Thread {
        |id: "${thread.id.id}",
-       |goalId: "${thread.goalId.id}",
        |summary: "${thread.summary}",
        |description: "${thread.description}",
        |status: "${thread.status.toString}"
+       |${getOptionalField("goalId", thread.goalId)}
        |})
      """.stripMargin
   }
@@ -195,11 +195,11 @@ object CypherNode {
     s"""
        |(weave:Weave {
        |id: "${weave.id.id}",
-       |goalId: "${weave.goalId.id}",
        |summary: "${weave.summary}",
        |description: "${weave.description}",
        |status: "${weave.status.toString}",
        |typeOf: "${weave.typeOf.toString}"
+       |${getOptionalField("goalId", weave.goalId)}
        |})
      """.stripMargin
   }

@@ -6,5 +6,5 @@ package com.anchor.model
 case class Thread (id: Id,
                    summary: String,
                    description: String,
-                   goalId: Id,
+                   goalId: Option[Id],
                    status: StatusType.Value) extends Task
