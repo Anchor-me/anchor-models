@@ -141,7 +141,7 @@ object CypherNode {
     s"""
        |(sunday:Sunday {
        |id: "${sunday.id.id}",
-       |weekId: ${sunday.weekId.id},
+       |weekId: "${sunday.weekId.id}",
        |date: ${sunday.date},
        |threads: ${getArrayField(sunday.threads)}
        |${getOptionalField("activeHobby", sunday.activeHobby)}
