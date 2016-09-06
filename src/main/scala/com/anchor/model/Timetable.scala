@@ -6,4 +6,4 @@ package com.anchor.model
 case class Timetable(id: Id,
                      dayId: Id,
                      scheduledItems: Seq[Id],
-                     timetableType: TimetableType.Value) extends Spoke
+                     typeOf: TimetableType.Value) extends Spoke

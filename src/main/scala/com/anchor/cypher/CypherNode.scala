@@ -180,14 +180,16 @@ object CypherNode {
      """.stripMargin
   }
 
-//  def apply(timetable: Timetable): String = {
-//    s"""
-//       |(timetable:Timetable {
-//       |dayId: "${timetable.dayId.id}",
-//       |scheduledItems:
-//       |})
-//     """.stripMargin
-//  }
+  def apply(timetable: Timetable): String = {
+    s"""
+       |(timetable:Timetable {
+       |id: "${timetable.id.id}",
+       |dayId: "${timetable.dayId.id}",
+       |scheduledItems: ${getArrayField(timetable.scheduledItems)},
+       |typeOf: "${timetable.typeOf.toString}"
+       |})
+     """.stripMargin
+  }
 
   def apply(toDo: ToDo): String = {
     s"""

@@ -24,6 +24,7 @@ package object cypher {
         case sunday: Sunday => CypherNode(sunday)
         case theme: Theme => CypherNode(theme)
         case thread: Thread => CypherNode(thread)
+        case timetable: Timetable => CypherNode(timetable)
         case toDo: ToDo => CypherNode(toDo)
         case weave: Weave => CypherNode(weave)
         case week: Week => CypherNode(week)
