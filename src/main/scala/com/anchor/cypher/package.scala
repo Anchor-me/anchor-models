@@ -13,6 +13,7 @@ package object cypher {
         case backlogItem: BacklogItem => CypherNode(backlogItem)
         case bufferBlock: BufferBlock => CypherNode(bufferBlock)
         case concreteBlock: ConcreteBlock => CypherNode(concreteBlock)
+        case epoch: Epoch => CypherNode(epoch)
         case financialTracking: FinancialTracking => CypherNode(financialTracking)
         case goal: Goal => CypherNode(goal)
         case hobby: Hobby => CypherNode(hobby)

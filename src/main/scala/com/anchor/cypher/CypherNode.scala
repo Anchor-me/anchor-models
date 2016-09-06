@@ -42,6 +42,15 @@ object CypherNode {
      """.stripMargin
   }
 
+  def apply(epoch: Epoch): String = {
+    s"""
+       |(epoch: Epoch {
+       |id: "${epoch.id.id}",
+       |name: "${epoch.name}"
+       |})
+     """.stripMargin
+  }
+
   def apply(financialTracking: FinancialTracking): String = {
     s"""
        |(financialTracking:FinancialTracking {
@@ -171,10 +180,10 @@ object CypherNode {
      """.stripMargin
   }
 
-//  def apply(timeTable: TimeTable): String = {
+//  def apply(timetable: Timetable): String = {
 //    s"""
-//       |(timeTable:TimeTable {
-//       |dayId: "${timeTable.dayId.id}",
+//       |(timetable:Timetable {
+//       |dayId: "${timetable.dayId.id}",
 //       |scheduledItems:
 //       |})
 //     """.stripMargin
@@ -236,6 +245,7 @@ object CypherNode {
     s"""
        |(year:Year {
        |id: "${year.id.id}",
+       |epochId: "${year.epochId.id}",
        |startDate: ${year.startDate},
        |finishDate: ${year.finishDate},
        |threads: ${getArrayField(year.threads)}

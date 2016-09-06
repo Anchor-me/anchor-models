@@ -39,6 +39,7 @@ package object json {
   implicit val formatConcreteBlock = Json.format[ConcreteBlock]
 
   implicit val formatBacklogItem = Json.format[BacklogItem]
+  implicit val formatEpoch = Json.format[Epoch]
   implicit val formatLaserDonut = Json.format[LaserDonut]
   implicit val formatGoal = Json.format[Goal]
   implicit val formatReceipt = Json.format[Receipt]
