@@ -223,7 +223,7 @@ object CypherNode {
        |yearId: "${week.yearId.id}",
        |startDate: ${week.startDate},
        |finishDate: ${week.finishDate},
-       |threads: ${getArrayField(week.threads)}
+       |threads: ${getArrayField(week.threads)},
        |weaves: ${getArrayField(week.weaves)}
        |${getOptionalField("laserDonut", week.laserDonut)}
        |})
@@ -236,7 +236,7 @@ object CypherNode {
        |id: "${weekDay.id.id}",
        |weekId: "${weekDay.weekId.id}",
        |date: ${weekDay.date},
-       |threads: ${getArrayField(weekDay.threads)}
+       |threads: ${getArrayField(weekDay.threads)},
        |weaves: ${getArrayField(weekDay.weaves)}
        |${getOptionalField("portion", weekDay.portion)}
        |})
