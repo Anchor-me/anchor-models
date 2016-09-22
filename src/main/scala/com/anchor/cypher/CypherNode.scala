@@ -85,12 +85,12 @@ object CypherNode {
     s"""
        |(hobby:Hobby {
        |id: "${hobby.id.id}",
-       |goalId: "${hobby.id.id}",
        |summary: "${hobby.summary}",
        |description: "${hobby.description}",
        |typeOf: "${hobby.typeOf.toString}",
        |frequency: "${hobby.frequency.toString}",
        |status: "${hobby.status.toString}"
+       |${getOptionalField("goalId", hobby.goalId)}
        |})
      """.stripMargin
   }
@@ -99,7 +99,7 @@ object CypherNode {
     s"""
        |(laserDonut:LaserDonut {
        |id: "${laserDonut.id.id}",
-       |goalId: "${laserDonut.id}",
+       |goalId: "${laserDonut.goalId.id}",
        |summary: "${laserDonut.summary}",
        |description: "${laserDonut.description}",
        |status: "${laserDonut.status.toString}",
