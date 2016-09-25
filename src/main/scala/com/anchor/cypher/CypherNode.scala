@@ -165,8 +165,8 @@ object CypherNode {
        |(year:Year {
        |id: "${year.id.id}",
        |epochId: "${year.epochId.id}",
-       |startDate: ${year.startDate},
-       |finishDate: ${year.finishDate}
+       |startDate: ${year.startDate.toString},
+       |finishDate: ${year.finishDate.toString}
        |})
      """.stripMargin
   }

@@ -14,6 +14,10 @@ case class DateTime(year: Int, month: Int, day: Int, hours: Int, minutes: Int, s
       seconds
     ).getMillis / 1000
   }
+
+  override def toString: String = {
+    s"$year-$month-$day,$hours:$minutes:$seconds"
+  }
 }
 
 object DateTime {
