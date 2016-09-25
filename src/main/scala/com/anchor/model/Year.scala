@@ -5,6 +5,5 @@ package com.anchor.model
  */
 case class Year (id: Id,
                  epochId: Id,
-                 startDate: Long,
-                 finishDate: Long,
-                 threads: Seq[Id]) extends TimeFrame
+                 startDate: DateTime,
+                 finishDate: DateTime) extends TimeFrame

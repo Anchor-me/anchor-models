@@ -19,34 +19,13 @@ object CypherNode {
      """.stripMargin
   }
 
-  def apply(bufferBlock: BufferBlock): String = {
-    s"""
-       |(bufferBlock:BufferBlock {
-       |id: "${bufferBlock.id.id}",
-       |start: ${bufferBlock.start},
-       |finish: ${bufferBlock.finish}
-       |${getOptionalField("firstTask", bufferBlock.firstTask)}
-       |${getOptionalField("secondTask", bufferBlock.secondTask)}
-       |})
-     """.stripMargin
-  }
-
-  def apply(concreteBlock: ConcreteBlock): String = {
-    s"""
-       |(concreteBlock: ConcreteBlock {
-       |id: "${concreteBlock.id.id}",
-       |start: ${concreteBlock.start},
-       |finish: ${concreteBlock.finish}
-       |${getOptionalField("task", concreteBlock.task)}
-       |})
-     """.stripMargin
-  }
-
   def apply(epoch: Epoch): String = {
     s"""
        |(epoch: Epoch {
        |id: "${epoch.id.id}",
-       |name: "${epoch.name}"
+       |name: "${epoch.name}",
+       |totem: "${epoch.totem}",
+       |question: "${epoch.question}"
        |})
      """.stripMargin
   }
@@ -134,30 +113,6 @@ object CypherNode {
      """.stripMargin
   }
 
-  def apply(saturday: Saturday): String = {
-    s"""
-       |(saturday:Saturday {
-       |id: "${saturday.id.id}",
-       |weekId: "${saturday.weekId.id}",
-       |date: ${saturday.date},
-       |threads: ${getArrayField(saturday.threads)}
-       |${getOptionalField("portion", saturday.portion)}
-       |})
-     """.stripMargin
-  }
-
-  def apply(sunday: Sunday): String = {
-    s"""
-       |(sunday:Sunday {
-       |id: "${sunday.id.id}",
-       |weekId: "${sunday.weekId.id}",
-       |date: ${sunday.date},
-       |threads: ${getArrayField(sunday.threads)}
-       |${getOptionalField("activeHobby", sunday.activeHobby)}
-       |})
-     """.stripMargin
-  }
-
   def apply(theme: Theme): String = {
     s"""
        |(theme:Theme {
@@ -176,17 +131,6 @@ object CypherNode {
        |description: "${thread.description}",
        |status: "${thread.status.toString}"
        |${getOptionalField("goalId", thread.goalId)}
-       |})
-     """.stripMargin
-  }
-
-  def apply(timetable: Timetable): String = {
-    s"""
-       |(timetable:Timetable {
-       |id: "${timetable.id.id}",
-       |dayId: "${timetable.dayId.id}",
-       |scheduledItems: ${getArrayField(timetable.scheduledItems)},
-       |typeOf: "${timetable.typeOf.toString}"
        |})
      """.stripMargin
   }
@@ -216,41 +160,13 @@ object CypherNode {
      """.stripMargin
   }
 
-  def apply(week: Week): String = {
-    s"""
-       |(week:Week {
-       |id: "${week.id.id}",
-       |yearId: "${week.yearId.id}",
-       |startDate: ${week.startDate},
-       |finishDate: ${week.finishDate},
-       |threads: ${getArrayField(week.threads)},
-       |weaves: ${getArrayField(week.weaves)}
-       |${getOptionalField("laserDonut", week.laserDonut)}
-       |})
-     """.stripMargin
-  }
-
-  def apply(weekDay: WeekDay): String = {
-    s"""
-       |(weekDay:WeekDay {
-       |id: "${weekDay.id.id}",
-       |weekId: "${weekDay.weekId.id}",
-       |date: ${weekDay.date},
-       |threads: ${getArrayField(weekDay.threads)},
-       |weaves: ${getArrayField(weekDay.weaves)}
-       |${getOptionalField("portion", weekDay.portion)}
-       |})
-     """.stripMargin
-  }
-
   def apply(year: Year): String = {
     s"""
        |(year:Year {
        |id: "${year.id.id}",
        |epochId: "${year.epochId.id}",
        |startDate: ${year.startDate},
-       |finishDate: ${year.finishDate},
-       |threads: ${getArrayField(year.threads)}
+       |finishDate: ${year.finishDate}
        |})
      """.stripMargin
   }
