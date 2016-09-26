@@ -42,7 +42,7 @@ object DateTime {
 
   private object Date {
     def apply(date: String): Date = {
-      val Array(day, month, year) = date.split("-").map(_.toInt)
+      val Array(year, month, day) = date.split("-").map(_.toInt)
       Date(
         day = day,
         month = month,

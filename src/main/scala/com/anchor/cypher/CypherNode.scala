@@ -164,11 +164,15 @@ object CypherNode {
     s"""
        |(year:Year {
        |id: "${year.id.id}",
-       |epochId: "${year.epochId.id}",
-       |startDate: ${year.startDate.toString},
-       |finishDate: ${year.finishDate.toString}
+       |epochId: "${year.epochId.id}"
+       |${getDateField("startDate", year.startDate)}
+       |${getDateField("finishDate", year.startDate)}
        |})
      """.stripMargin
+  }
+
+  private def getDateField(key: String, value: DateTime): String = {
+    s""", $key : "${value.toString}""""
   }
 
   private def getOptionalField(key: String, value: Option[Id]): String = {
