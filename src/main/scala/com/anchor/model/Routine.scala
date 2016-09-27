@@ -5,4 +5,5 @@ package com.anchor.model
   */
 case class Routine(id: Id,
                    name: String,
-                   timetables: Seq[Timetable])
+                   timetables: Seq[Timetable],
+                   isCurrent: Boolean)

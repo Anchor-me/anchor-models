@@ -37,3 +37,15 @@ class DateTimeSpec extends FlatSpec with Matchers {
     output should be (expected)
   }
 }
+
+object DateTimeSpec {
+
+  val base = DateTime (
+    year = 0,
+    month = 0,
+    day = 0,
+    hours = 0,
+    minutes = 0,
+    seconds = 0
+  )
+}
