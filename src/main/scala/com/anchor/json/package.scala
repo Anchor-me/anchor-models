@@ -45,6 +45,7 @@ package object json {
   implicit val formatGoal = Json.format[Goal]
   implicit val formatReceipt = Json.format[Receipt]
   implicit val formatTheme = Json.format[Theme]
+
   implicit val formatScheduledItem = new Format[ScheduledItem] {
     override def reads(json: JsValue): JsResult[ScheduledItem] = {
       Json.fromJson[BufferBlock](json) or
@@ -57,5 +58,6 @@ package object json {
     }
   }
   implicit val formatTimetable = Json.format[Timetable]
+  implicit val formatRoutine = Json.format[Routine]
   implicit val formatYear = Json.format[Year]
 }

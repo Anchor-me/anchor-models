@@ -5,7 +5,7 @@ package com.anchor.model
   */
 object TimetableType extends Enumeration {
   val Daily,
-  WeekDays,
+  WeekDays, WeekEnds,
   Monday, Tuesday, Wednesday, Thursday, Friday,
   Saturday, Sunday,
   OneOff = Value

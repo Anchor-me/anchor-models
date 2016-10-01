@@ -1,5 +1,9 @@
 package com.anchor.model
 
+import Placeholders._
+import play.api.libs.json.Json
+import com.anchor.json._
+
 /**
   * Created by mesfinmebrate on 27/09/2016.
   */
@@ -119,8 +123,81 @@ object RoutineSpec extends App {
     val showerAndCommute = BufferBlock(
       firstTask = Some(takeShower),
       secondTask = Some(commute),
-      start = DateTimeSpec.base.copy(hours = 7, minutes = 20, seconds = 0),
-      finish = DateTimeSpec.base.copy(hours = 7, minutes = 30, seconds = 0)
+      start = DateTimeSpec.base.copy(hours = 8, minutes = 0, seconds = 0),
+      finish = DateTimeSpec.base.copy(hours = 8, minutes = 20, seconds = 0)
     )
+
+    val commuteOnly = ConcreteBlock(
+      task = Some(commute),
+      start = DateTimeSpec.base.copy(hours = 8, minutes = 20, seconds = 0),
+      finish = DateTimeSpec.base.copy(hours = 9, minutes = 10, seconds = 0)
+    )
+
+    val commuteAndWeave = BufferBlock(
+      firstTask = Some(commute),
+      secondTask = Some(WeavePlaceholder),
+      start = DateTimeSpec.base.copy(hours = 9, minutes = 10, seconds = 0),
+      finish = DateTimeSpec.base.copy(hours = 9, minutes = 20, seconds = 0)
+    )
+
+    val weaveOnly = ConcreteBlock(
+      task = Some(WeavePlaceholder),
+      start = DateTimeSpec.base.copy(hours = 9, minutes = 20, seconds = 0),
+      finish = DateTimeSpec.base.copy(hours = 16, minutes = 0, seconds = 0)
+    )
+
+    val weaveAndPortion = BufferBlock(
+      firstTask = Some(WeavePlaceholder),
+      secondTask = Some(WeavePlaceholder),
+      start = DateTimeSpec.base.copy(hours = 16, minutes = 0, seconds = 0),
+      finish = DateTimeSpec.base.copy(hours = 16, minutes = 30, seconds = 0)
+    )
+
+    val portionOnly = ConcreteBlock(
+      task = Some(LaserDonutPlaceholder),
+      start = DateTimeSpec.base.copy(hours = 16, minutes = 30, seconds = 0),
+      finish = DateTimeSpec.base.copy(hours = 20, minutes = 30, seconds = 0)
+    )
+
+    val portionAndSleep = BufferBlock(
+      firstTask = Some(LaserDonutPlaceholder),
+      secondTask = Some(sleep),
+      start = DateTimeSpec.base.copy(hours = 20, minutes = 30, seconds = 0),
+      finish = DateTimeSpec.base.copy(hours = 21, minutes = 20, seconds = 0)
+    )
+
+    val sleepOnly = ConcreteBlock(
+      task = Some(sleep),
+      start = DateTimeSpec.base.copy(hours = 21, minutes = 20, seconds = 0),
+      finish = DateTimeSpec.base.copy(hours = 6, minutes = 0, seconds = 0)
+    )
+
+    val timetable = Timetable(
+      date = None,
+      scheduledItems = Seq(
+        wakeUpOnly,
+        wakeUpAndRun,
+        goRunningOnly,
+        goRunningAndShower,
+        takeShowerOnly,
+        showerAndCommute,
+        commuteOnly,
+        commuteAndWeave,
+        weaveOnly,
+        weaveAndPortion,
+        portionOnly,
+        portionAndSleep
+      ),
+      typeOf = TimetableType.Daily
+    )
+
+    val routine = Routine(
+      id = Id("ROUTINE1"),
+      name = "Lean month",
+      timetables = Seq(timetable),
+      isCurrent = true
+    )
+
+    println(Json.prettyPrint(Json.toJson(routine)))
   }
 }
