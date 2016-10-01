@@ -4,6 +4,17 @@ package com.anchor.model
   * Created by mesfinmebrate on 25/09/2016.
   */
 case class DateTime(year: Int, month: Int, day: Int, hours: Int, minutes: Int, seconds: Int) {
+  def toMillis: Long = {
+    new org.joda.time.DateTime (
+      year,
+      month,
+      day,
+      hours,
+      minutes,
+      seconds
+    ).getMillis / 1000
+  }
+
   def toSeconds: Long = {
     new org.joda.time.DateTime (
       year,
@@ -33,6 +44,18 @@ object DateTime {
       time.hours,
       time.minutes,
       time.seconds
+    )
+  }
+
+  def fromMillis(millis: Long): DateTime = {
+    val jodaDate = new org.joda.time.DateTime(millis)
+    DateTime(
+      jodaDate.getYear,
+      jodaDate.getMonthOfYear,
+      jodaDate.getDayOfMonth,
+      jodaDate.getHourOfDay,
+      jodaDate.getMinuteOfHour,
+      jodaDate.getSecondOfMinute
     )
   }
 
