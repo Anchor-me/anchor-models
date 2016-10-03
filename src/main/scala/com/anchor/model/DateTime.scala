@@ -12,18 +12,22 @@ case class DateTime(year: Int, month: Int, day: Int, hours: Int, minutes: Int, s
       hours,
       minutes,
       seconds
-    ).getMillis / 1000
+    ).getMillis
   }
 
   def toSeconds: Long = {
-    new org.joda.time.DateTime (
-      year,
-      month,
-      day,
-      hours,
-      minutes,
-      seconds
-    ).getMillis / 1000
+    toMillis / 1000
+  }
+
+  def withoutTime: DateTime = {
+    DateTime(
+      year = year,
+      month = month,
+      day = day,
+      hours = 0,
+      minutes = 0,
+      seconds = 0
+    )
   }
 
   override def toString: String = {
