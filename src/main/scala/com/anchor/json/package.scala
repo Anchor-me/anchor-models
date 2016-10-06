@@ -5,8 +5,7 @@ package com.anchor
  */
 
 import com.anchor.model._
-import play.api.libs.json.{Format, JsResult, JsValue, Json}
-import play.api.libs.functional.syntax._
+import play.api.libs.json._
 
 package object json {
 
@@ -48,8 +47,19 @@ package object json {
 
   implicit val formatScheduledItem = new Format[ScheduledItem] {
     override def reads(json: JsValue): JsResult[ScheduledItem] = {
-      Json.fromJson[BufferBlock](json) or
+      if(isConcrete(json)) {
         Json.fromJson[ConcreteBlock](json)
+      }
+      else {
+        Json.fromJson[BufferBlock](json)
+      }
+    }
+
+    def isConcrete(json: JsValue): Boolean = {
+      (json \ "task") match {
+        case _:JsDefined => true
+        case _:JsUndefined => false
+      }
     }
 
     override def writes(o: ScheduledItem): JsValue = o match {
