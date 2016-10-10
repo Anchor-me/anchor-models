@@ -6,4 +6,5 @@ package com.anchor.model
 trait ScheduledItem extends Spoke {
   def start: DateTime
   def finish: DateTime
+  def typeOf: ScheduledItemType.Value
 }

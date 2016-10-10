@@ -24,6 +24,7 @@ package object json {
   implicit val formatGoalStatusType = EnumUtils.format(GoalStatusType)
   implicit val formatTaskType = EnumUtils.format(TaskType)
   implicit val formatTimetableType = EnumUtils.format(TimetableType)
+  implicit val formatScheduledItemType = EnumUtils.format(ScheduledItemType)
 
   implicit val formatHobby = Json.format[Hobby]
   implicit val formatToDo = Json.format[ToDo]

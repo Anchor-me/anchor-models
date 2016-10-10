@@ -1,7 +1,7 @@
 package com.anchor.model
 
 import Placeholders._
-import play.api.libs.json.Json
+import play.api.libs.json.{JsArray, Json}
 import com.anchor.json._
 
 /**
@@ -191,13 +191,28 @@ object RoutineSpec extends App {
       typeOf = TimetableType.Daily
     )
 
-    val routine = Routine(
+    val routine1 = Routine(
       id = Id("ROUTINE1"),
       name = "Lean month",
       timetables = Seq(timetable),
       isCurrent = true
     )
 
-    println(Json.prettyPrint(Json.toJson(routine)))
+    val routine2 = Routine(
+      id = Id("ROUTINE1"),
+      name = "Lean month",
+      timetables = Seq(timetable),
+      isCurrent = false
+    )
+
+    val routines = Json.obj((
+      "routines",
+      JsArray(Seq(
+        Json.toJson(routine1),
+        Json.toJson(routine2)
+      ))
+    ))
+
+    println(Json.prettyPrint(routines))
   }
 }
