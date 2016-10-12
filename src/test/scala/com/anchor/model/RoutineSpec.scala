@@ -29,14 +29,14 @@ object RoutineSpec extends App {
       taskId = Id(id = "THREAD2"),
       name = "Go for a run",
       taskType = TaskType.Thread,
-      statusType = StatusType.Complete
+      statusType = StatusType.NotStarted
     )
 
     val takeShower = ScheduledTask (
       taskId = Id(id = "THREAD3"),
       name = "Take a shower",
       taskType = TaskType.Thread,
-      statusType = StatusType.Complete
+      statusType = StatusType.Incomplete
     )
 
     val commute = ScheduledTask (
@@ -50,7 +50,7 @@ object RoutineSpec extends App {
       taskId = Id(id = "WEAVE1"),
       name = "Configure build server",
       taskType = TaskType.Weave,
-      statusType = StatusType.NotComplete
+      statusType = StatusType.Incomplete
     )
 
     val dojo = ScheduledTask (
@@ -85,7 +85,7 @@ object RoutineSpec extends App {
       taskId = Id(id = "THREAD4"),
       name = "Sleep",
       taskType = TaskType.Thread,
-      statusType = StatusType.Complete
+      statusType = StatusType.Incomplete
     )
 
     val wakeUpOnly = ConcreteBlock(
@@ -141,14 +141,14 @@ object RoutineSpec extends App {
     )
 
     val weaveOnly = ConcreteBlock(
-      task = Some(WeavePlaceholder),
+      task = Some(WeavePlaceholder.copy(statusType = StatusType.Unknown)),
       start = DateTimeSpec.base.copy(hours = 9, minutes = 20, seconds = 0),
       finish = DateTimeSpec.base.copy(hours = 16, minutes = 0, seconds = 0)
     )
 
     val weaveAndPortion = BufferBlock(
       firstTask = Some(WeavePlaceholder),
-      secondTask = Some(WeavePlaceholder),
+      secondTask = Some(LaserDonutPlaceholder),
       start = DateTimeSpec.base.copy(hours = 16, minutes = 0, seconds = 0),
       finish = DateTimeSpec.base.copy(hours = 16, minutes = 30, seconds = 0)
     )
@@ -199,7 +199,7 @@ object RoutineSpec extends App {
     )
 
     val routine2 = Routine(
-      id = Id("ROUTINE1"),
+      id = Id("ROUTINE2"),
       name = "Lean month",
       timetables = Seq(timetable),
       isCurrent = false

@@ -21,7 +21,7 @@ object BufferBlockSpec {
       taskId = Id(id = "THREAD3"),
       name = "Take a shower",
       taskType = TaskType.Thread,
-      statusType = StatusType.NotComplete
+      statusType = StatusType.Incomplete
     ))
   )
 }
